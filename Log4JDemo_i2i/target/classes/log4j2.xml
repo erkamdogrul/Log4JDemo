@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+
+    <Appenders>
+        <RollingFile name="rolling" fileName="C:\Users\Erkam\Logs.log"
+                     filePattern="C:\HaticeLog-%d{yyyy-MM-dd-HH-mm-ss}-%i.log">
+            <PatternLayout pattern=" %-5level %d{yyyy/MM/dd HH:mm:ss} %logger{36} (%F:%L) - %msg%n"/>
+            <Policies>
+                <SizeBasedTriggeringPolicy size="1 MB"></SizeBasedTriggeringPolicy>
+            </Policies>
+            <DefaultRolloverStrategy max="200">
+                <Delete basePath="C:\Users\Erkam" maxDepth="1">
+                    <IfLastModified age="1d"/>
+                </Delete>
+            </DefaultRolloverStrategy>
+        </RollingFile>
+
+    </Appenders>
+
+    <Loggers>
+
+        <Root level="debug">
+            <AppenderRef ref="rolling"/>
+        </Root>
+
+    </Loggers>
+</Configuration>
